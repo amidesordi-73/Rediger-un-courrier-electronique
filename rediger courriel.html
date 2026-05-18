@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini-site – Écrire un e-mail en anglais</title>
+  <style>
+    :root{
+      --blue:#1f4f8f;
+      --blue2:#2f80ed;
+      --green:#12a879;
+      --purple:#7c3aed;
+      --gold:#ffd36e;
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#667085;
+      --line:#d9e3f0;
+      --ok:#157347;
+      --bad:#b42318;
+      --shadow:0 16px 35px rgba(31,79,143,.14);
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(47,128,237,.18), transparent 34rem),
+        radial-gradient(circle at bottom right, rgba(124,58,237,.10), transparent 34rem),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 46%, #eef4fb 100%);
+      line-height:1.55;
+    }
+
+    header{
+      background:linear-gradient(125deg, var(--blue), var(--blue2) 52%, var(--purple));
+      color:white;
+      padding:34px 18px 46px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    header::after{
+      content:"@";
+      position:absolute;
+      right:6vw;
+      top:10px;
+      font-size:14rem;
+      line-height:1;
+      opacity:.11;
+      transform:rotate(-10deg);
+      font-weight:900;
+    }
+
+    .wrap{
+      width:min(1160px, calc(100% - 28px));
+      margin:auto;
+      position:relative;
+      z-index:1;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:26px;
+      flex-wrap:wrap;
+    }
+
+    .logo{
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      background:white;
+      color:var(--blue);
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      box-shadow:0 10px 20px rgba(0,0,0,.14);
+    }
+
+    .brand strong{font-size:1.05rem}
+    .brand span{opacity:.9;font-size:.95rem}
+
+    h1{
+      font-size:clamp(2rem, 5vw, 4rem);
+      line-height:1.04;
+      margin:0 0 14px;
+      max-width:940px;
+    }
+
+    .subtitle{
+      font-size:1.16rem;
+      max-width:900px;
+      opacity:.96;
+      margin:0 0 25px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .btn, button{
+      border:0;
+      border-radius:999px;
+      padding:12px 18px;
+      font-weight:800;
+      cursor:pointer;
+      transition:.2s transform, .2s box-shadow, .2s background;
+      font-size:.95rem;
+      font-family:inherit;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      text-decoration:none;
+    }
+
+    .btn-primary{
+      background:white;
+      color:var(--blue);
+      box-shadow:0 10px 20px rgba(0,0,0,.13);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.18);
+      color:white;
+      border:1px solid rgba(255,255,255,.34);
+    }
+
+    .btn:hover, button:hover{
+      transform:translateY(-1px);
+      box-shadow:0 8px 18px rgba(31,79,143,.18);
+    }
+
+    main{padding:28px 0 54px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 315px 1fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    aside{
+      position:sticky;
+      top:14px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    aside h2{
+      font-size:1.05rem;
+      margin:0 0 12px;
+      color:var(--blue);
+    }
+
+    .toc{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-bottom:18px;
+      max-height:52vh;
+      overflow:auto;
+      padding-right:4px;
+    }
+
+    .toc a{
+      text-decoration:none;
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:14px;
+      background:#f8fbff;
+      border:1px solid transparent;
+      font-weight:700;
+      font-size:.93rem;
+    }
+
+    .toc a:hover{
+      border-color:#bcd3f5;
+      color:var(--blue);
+    }
+
+    .toolbox{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .toolbox input, select, textarea{
+      width:100%;
+      border:1px solid var(--line);
+      padding:12px 14px;
+      border-radius:14px;
+      font-size:.95rem;
+      outline:none;
+      font-family:inherit;
+      background:white;
+    }
+
+    textarea{min-height:92px; resize:vertical}
+
+    .toolbox input:focus, select:focus, textarea:focus{
+      border-color:var(--blue2);
+      box-shadow:0 0 0 4px rgba(47,128,237,.12);
+    }
+
+    .content{
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+    }
+
+    .card{
+      background:rgba(255,255,255,.96);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .intro, .panel{
+      padding:26px;
+    }
+
+    .intro h2, section h2{
+      margin:0 0 10px;
+      color:var(--blue);
+      font-size:1.55rem;
+    }
+
+    .intro p{margin:0 0 12px}
+
+    .badges{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .badge{
+      background:#edf5ff;
+      color:var(--blue);
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:.88rem;
+    }
+
+    .section-head{
+      padding:22px 24px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      background:linear-gradient(180deg, #ffffff, #f9fcff);
+    }
+
+    .section-head p{
+      margin:4px 0 0;
+      color:var(--muted);
+    }
+
+    .count{
+      white-space:nowrap;
+      background:var(--gold);
+      color:#493100;
+      border-radius:999px;
+      padding:7px 11px;
+      font-weight:900;
+      font-size:.9rem;
+    }
+
+    .vocab-table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    .vocab-table th{
+      background:#f0f6ff;
+      color:var(--blue);
+      text-align:left;
+      padding:13px 16px;
+      font-size:.92rem;
+      border-bottom:1px solid var(--line);
+    }
+
+    .vocab-table td{
+      padding:13px 16px;
+      border-bottom:1px solid #edf2f7;
+      vertical-align:middle;
+    }
+
+    .vocab-table tr:last-child td{border-bottom:0}
+
+    .en{
+      font-weight:900;
+      color:#111827;
+    }
+
+    .fr{
+      color:#374151;
+    }
+
+    .small-note{
+      color:var(--muted);
+      font-size:.88rem;
+      margin-top:5px;
+    }
+
+    .audio-cell{
+      display:flex;
+      gap:7px;
+      flex-wrap:wrap;
+    }
+
+    .sound{
+      padding:8px 10px;
+      border-radius:12px;
+      background:#edf5ff;
+      color:var(--blue);
+      border:1px solid #cfe0f7;
+      font-weight:900;
+    }
+
+    .sound.frbtn{
+      background:#ecfdf5;
+      color:#08765a;
+      border-color:#b7ead7;
+    }
+
+    .model-tabs{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:18px 0;
+    }
+
+    .model-box{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      align-items:start;
+    }
+
+    .mail-card{
+      background:#f8fbff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      white-space:pre-wrap;
+      min-height:260px;
+    }
+
+    .mail-card h3{
+      margin:0 0 10px;
+      color:var(--blue);
+    }
+
+    .subject{
+      background:#fff7df;
+      border:1px solid #ffe5a3;
+      color:#5b4100;
+      padding:10px 12px;
+      border-radius:14px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    .builder{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-top:16px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .field.full{grid-column:1 / -1}
+
+    .field label{
+      font-weight:900;
+      color:var(--blue);
+    }
+
+    .output{
+      background:#0f172a;
+      color:white;
+      border-radius:18px;
+      padding:18px;
+      white-space:pre-wrap;
+      min-height:230px;
+      overflow:auto;
+      border:1px solid rgba(255,255,255,.1);
+    }
+
+    .copy-note{
+      color:var(--muted);
+      font-weight:800;
+      margin-top:8px;
+      min-height:24px;
+    }
+
+    .quiz-box{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:16px;
+    }
+
+    .question{
+      background:#f8fbff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      min-height:170px;
+    }
+
+    .question h3{margin:0 0 10px;color:var(--blue)}
+
+    .answer-list{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .answer{
+      text-align:left;
+      background:white;
+      color:var(--text);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 14px;
+      font-weight:800;
+    }
+
+    .answer.correct{
+      background:#e8f7ef;
+      border-color:#a6dfbf;
+      color:var(--ok);
+    }
+
+    .answer.wrong{
+      background:#fff1f0;
+      border-color:#ffc7c1;
+      color:var(--bad);
+    }
+
+    .quiz-controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .blue-button{
+      background:var(--blue);
+      color:white;
+    }
+
+    .purple-button{
+      background:var(--purple);
+      color:white;
+    }
+
+    .green-button{
+      background:var(--green);
+      color:white;
+    }
+
+    .light-button{
+      background:#eef4fb;
+      color:var(--blue);
+      border:1px solid #d4e4f7;
+    }
+
+    .result{
+      margin-top:14px;
+      font-weight:900;
+      color:var(--blue);
+      min-height:24px;
+    }
+
+    .flashcards{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:14px;
+      margin-top:16px;
+    }
+
+    .flashcard{
+      min-height:145px;
+      perspective:1000px;
+      cursor:pointer;
+    }
+
+    .flash-inner{
+      width:100%;
+      height:100%;
+      min-height:145px;
+      position:relative;
+      transform-style:preserve-3d;
+      transition: transform .5s;
+    }
+
+    .flashcard.flipped .flash-inner{
+      transform:rotateY(180deg);
+    }
+
+    .flash-front, .flash-back{
+      position:absolute;
+      inset:0;
+      backface-visibility:hidden;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#f8fbff;
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:10px;
+    }
+
+    .flash-front strong, .flash-back strong{
+      font-size:1.02rem;
+    }
+
+    .flash-back{
+      transform:rotateY(180deg);
+      background:#ecfdf5;
+    }
+
+    .hidden{display:none !important}
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      padding:30px 10px;
+      border-top:1px solid var(--line);
+      background:white;
+    }
+
+    @media (max-width:960px){
+      .grid{grid-template-columns:1fr}
+      aside{position:relative; top:0}
+      .quiz-box, .model-box, .builder{grid-template-columns:1fr}
+      .flashcards{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width:640px){
+      .vocab-table, .vocab-table tbody, .vocab-table tr, .vocab-table td, .vocab-table th{
+        display:block;
+      }
+
+      .vocab-table thead{display:none}
+
+      .vocab-table tr{
+        border-bottom:1px solid var(--line);
+        padding:10px 0;
+      }
+
+      .vocab-table td{
+        border-bottom:0;
+        padding:7px 16px;
+      }
+
+      .vocab-table td::before{
+        content:attr(data-label);
+        display:block;
+        font-size:.76rem;
+        text-transform:uppercase;
+        letter-spacing:.06em;
+        color:var(--muted);
+        font-weight:900;
+        margin-bottom:3px;
+      }
+
+      .flashcards{grid-template-columns:1fr}
+    }
+
+    @media print{
+      header, aside, #quiz, #flashcards, footer, .quiz-controls, .sound{display:none}
+      body{background:white}
+      .grid{display:block}
+      .card{box-shadow:none;border:1px solid #ddd;break-inside:avoid}
+      .model-box{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brand">
+                  <strong>MY-CUP-OF-T</strong><br>
+          <span>Mini-site pédagogique – Anglais professionnel</span>
+        </div>
+      </div>
+
+      <h1>Écrire un e-mail en anglais</h1>
+      <p class="subtitle">
+        Apprenez à structurer un mail professionnel, choisir la bonne formule,
+        formuler une demande, joindre un document, relancer poliment et conclure correctement.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#structure">Commencer la fiche</a>
+        <a class="btn btn-secondary" href="#models">Voir les modèles</a>
+        <a class="btn btn-secondary" href="#builder">Générer un mail</a>
+        <a class="btn btn-secondary" href="#quiz">Faire le quiz</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap grid">
+    <aside aria-label="Navigation du mini-site">
+      <h2>Table des matières</h2>
+      <nav class="toc">
+        <a href="#structure">1. Structure du mail</a>
+        <a href="#greetings">2. Salutations</a>
+        <a href="#reason">3. Raison du message</a>
+        <a href="#requests">4. Demandes</a>
+        <a href="#attachments">5. Pièces jointes</a>
+        <a href="#followup">6. Relance / remerciement</a>
+        <a href="#closing">7. Conclusion</a>
+        <a href="#technical">8. Vocabulaire messagerie</a>
+        <a href="#models">9. Modèles de mails</a>
+        <a href="#builder">10. Générateur guidé</a>
+        <a href="#quiz">11. Quiz rapide</a>
+        <a href="#flashcards">12. Cartes mémo</a>
+      </nav>
+
+      <div class="toolbox">
+        <label for="search"><strong>Rechercher un mot</strong></label>
+        <input id="search" type="search" placeholder="Ex. attachment, relance, subject..." />
+        <button class="light-button" onclick="resetSearch()">Tout afficher</button>
+        <button class="light-button" onclick="window.print()">Imprimer la fiche</button>
+      </div>
+    </aside>
+
+    <div class="content">
+      <article class="card intro">
+        <h2>Objectif pédagogique</h2>
+        <p>
+          Cette ressource aide les stagiaires à rédiger un e-mail clair en anglais :
+          salutation, introduction, demande, pièce jointe, conclusion et signature.
+        </p>
+        <p>
+          Cliquez sur <strong>EN</strong> pour écouter la phrase anglaise, ou sur
+          <strong>FR</strong> pour entendre la traduction française.
+        </p>
+        <div class="badges">
+          <span class="badge">Niveau A2-B1</span>
+          <span class="badge">E-mail professionnel</span>
+          <span class="badge">Audio intégré</span>
+          <span class="badge">Générateur de mail</span>
+        </div>
+      </article>
+
+      <section class="card" id="structure"></section>
+      <section class="card" id="greetings"></section>
+      <section class="card" id="reason"></section>
+      <section class="card" id="requests"></section>
+      <section class="card" id="attachments"></section>
+      <section class="card" id="followup"></section>
+      <section class="card" id="closing"></section>
+      <section class="card" id="technical"></section>
+
+      <section class="card panel" id="models">
+        <h2>9. Modèles de mails à écouter</h2>
+        <p>Choisissez un modèle, écoutez-le en anglais ou affichez sa traduction française.</p>
+        <div class="model-tabs">
+          <button class="blue-button" data-model="formal">Demande d’information</button>
+          <button class="purple-button" data-model="followup">Relance professionnelle</button>
+          <button class="green-button" data-model="friendly">Message amical</button>
+        </div>
+        <div id="model-title" class="result"></div>
+        <div class="quiz-controls">
+          <button class="sound" id="listen-model-en">🔊 Écouter le mail EN</button>
+          <button class="sound frbtn" id="listen-model-fr">🔊 Écouter la traduction FR</button>
+        </div>
+        <div class="model-box">
+          <div class="mail-card">
+            <h3>Version anglaise</h3>
+            <div class="subject" id="model-subject-en"></div>
+            <div id="model-en"></div>
+          </div>
+          <div class="mail-card">
+            <h3>Traduction française</h3>
+            <div class="subject" id="model-subject-fr"></div>
+            <div id="model-fr"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card panel" id="builder">
+        <h2>10. Générateur guidé de mail</h2>
+        <p>Complétez les champs : le mini-site génère une base de mail professionnel en anglais.</p>
+        <div class="builder">
+          <div class="field">
+            <label for="bRecipient">Destinataire</label>
+            <input id="bRecipient" value="Ms Johnson" />
+          </div>
+          <div class="field">
+            <label for="bSender">Votre nom</label>
+            <input id="bSender" value="Emma Martin" />
+          </div>
+          <div class="field">
+            <label for="bCompany">Entreprise / organisme</label>
+            <input id="bCompany" value="Avenir Pro Formations" />
+          </div>
+          <div class="field">
+            <label for="bType">Type de message</label>
+            <select id="bType">
+              <option value="request">Demande d’information</option>
+              <option value="confirm">Confirmation de rendez-vous</option>
+              <option value="attachment">Envoi de pièce jointe</option>
+              <option value="followup">Relance</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="bDetails">Détails à intégrer</label>
+            <textarea id="bDetails">Could you please send me the registration details and available dates?</textarea>
+          </div>
+        </div>
+        <div class="quiz-controls">
+          <button class="blue-button" onclick="buildEmail()">Générer le mail</button>
+          <button class="sound" onclick="speakBuiltEmail()">🔊 Écouter le mail généré</button>
+          <button class="green-button" onclick="copyBuiltEmail()">Copier le mail</button>
+        </div>
+        <div class="output" id="built-email"></div>
+        <div class="copy-note" id="copy-note"></div>
+      </section>
+
+      <section class="card panel" id="quiz">
+        <h2>11. Quiz rapide</h2>
+        <p>Lisez la phrase anglaise, puis choisissez la bonne traduction française.</p>
+        <div class="quiz-box">
+          <div class="question">
+            <h3>Question</h3>
+            <p id="quiz-question">Cliquez sur “Nouvelle question”.</p>
+            <div class="quiz-controls">
+              <button class="sound" id="listen-question" type="button">🔊 Écouter EN</button>
+            </div>
+          </div>
+          <div class="question">
+            <h3>Réponses</h3>
+            <div class="answer-list" id="answers"></div>
+          </div>
+        </div>
+        <div class="quiz-controls">
+          <button class="blue-button" onclick="newQuestion()">Nouvelle question</button>
+          <button class="green-button" onclick="resetQuiz()">Recommencer le score</button>
+        </div>
+        <div class="result" id="quiz-result"></div>
+      </section>
+
+      <section class="card panel" id="flashcards">
+        <h2>12. Cartes mémo</h2>
+        <p>Cliquez sur une carte pour retourner la traduction.</p>
+        <div class="flashcards" id="flash-list"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    Mini-site pédagogique original – Avenir Pro Formations – Rédaction d’e-mails en anglais.
+  </footer>
+
+  <script>
+    const categories = {
+      "structure": {
+            "title": "1. Structure d’un e-mail professionnel",
+            "description": "Les étapes simples pour organiser un e-mail en anglais.",
+            "items": [
+                  {
+                        "en": "Subject line",
+                        "fr": "Objet du mail"
+                  },
+                  {
+                        "en": "Greeting",
+                        "fr": "Formule de salutation"
+                  },
+                  {
+                        "en": "Opening sentence",
+                        "fr": "Phrase d’introduction"
+                  },
+                  {
+                        "en": "Reason for writing",
+                        "fr": "Raison du message"
+                  },
+                  {
+                        "en": "Main request",
+                        "fr": "Demande principale"
+                  },
+                  {
+                        "en": "Additional information",
+                        "fr": "Information complémentaire"
+                  },
+                  {
+                        "en": "Closing sentence",
+                        "fr": "Phrase de conclusion"
+                  },
+                  {
+                        "en": "Sign-off",
+                        "fr": "Formule de clôture"
+                  },
+                  {
+                        "en": "Signature",
+                        "fr": "Signature"
+                  }
+            ]
+      },
+      "greetings": {
+            "title": "2. Salutations et début du mail",
+            "description": "Les formules pour commencer un e-mail selon le niveau de formalité.",
+            "items": [
+                  {
+                        "en": "Dear Mr Brown,",
+                        "fr": "Cher Monsieur Brown,"
+                  },
+                  {
+                        "en": "Dear Ms Taylor,",
+                        "fr": "Chère Madame Taylor,"
+                  },
+                  {
+                        "en": "Dear Sir or Madam,",
+                        "fr": "Madame, Monsieur,"
+                  },
+                  {
+                        "en": "To whom it may concern,",
+                        "fr": "À qui de droit,"
+                  },
+                  {
+                        "en": "Good morning,",
+                        "fr": "Bonjour,"
+                  },
+                  {
+                        "en": "Good afternoon,",
+                        "fr": "Bonjour,"
+                  },
+                  {
+                        "en": "Hello Sarah,",
+                        "fr": "Bonjour Sarah,"
+                  },
+                  {
+                        "en": "Hi Tom,",
+                        "fr": "Salut Tom,"
+                  },
+                  {
+                        "en": "I hope you are well.",
+                        "fr": "J’espère que vous allez bien."
+                  },
+                  {
+                        "en": "I hope this email finds you well.",
+                        "fr": "J’espère que ce message vous trouve en bonne forme."
+                  }
+            ]
+      },
+      "reason": {
+            "title": "3. Présenter la raison du message",
+            "description": "Les phrases utiles pour expliquer pourquoi vous écrivez.",
+            "items": [
+                  {
+                        "en": "I am writing regarding your request.",
+                        "fr": "Je vous écris concernant votre demande."
+                  },
+                  {
+                        "en": "I am writing about our meeting.",
+                        "fr": "Je vous écris au sujet de notre réunion."
+                  },
+                  {
+                        "en": "I am contacting you to confirm the appointment.",
+                        "fr": "Je vous contacte pour confirmer le rendez-vous."
+                  },
+                  {
+                        "en": "I am writing on behalf of our company.",
+                        "fr": "Je vous écris au nom de notre entreprise."
+                  },
+                  {
+                        "en": "Further to our phone conversation, I am sending you the details.",
+                        "fr": "Suite à notre conversation téléphonique, je vous envoie les détails."
+                  },
+                  {
+                        "en": "Thank you for your email.",
+                        "fr": "Merci pour votre e-mail."
+                  },
+                  {
+                        "en": "Thank you for your quick reply.",
+                        "fr": "Merci pour votre réponse rapide."
+                  },
+                  {
+                        "en": "I am responding to your message.",
+                        "fr": "Je réponds à votre message."
+                  },
+                  {
+                        "en": "I would like to inform you that the file is ready.",
+                        "fr": "Je souhaite vous informer que le dossier est prêt."
+                  },
+                  {
+                        "en": "I regret to inform you that we cannot accept your request.",
+                        "fr": "J’ai le regret de vous informer que nous ne pouvons pas accepter votre demande."
+                  }
+            ]
+      },
+      "requests": {
+            "title": "4. Formuler une demande",
+            "description": "Les formulations polies pour demander une information, un document ou une action.",
+            "items": [
+                  {
+                        "en": "Could you please send me the document?",
+                        "fr": "Pourriez-vous m’envoyer le document, s’il vous plaît ?"
+                  },
+                  {
+                        "en": "Would you be able to confirm the date?",
+                        "fr": "Pourriez-vous confirmer la date ?"
+                  },
+                  {
+                        "en": "I would be grateful if you could reply by Friday.",
+                        "fr": "Je vous serais reconnaissant(e) de répondre avant vendredi."
+                  },
+                  {
+                        "en": "Could you please tell me more about your offer?",
+                        "fr": "Pourriez-vous m’en dire plus sur votre offre ?"
+                  },
+                  {
+                        "en": "Please let me know if this is convenient for you.",
+                        "fr": "Merci de me dire si cela vous convient."
+                  },
+                  {
+                        "en": "Please confirm receipt of this email.",
+                        "fr": "Merci de confirmer la bonne réception de cet e-mail."
+                  },
+                  {
+                        "en": "Could we schedule a meeting next week?",
+                        "fr": "Pourrions-nous prévoir une réunion la semaine prochaine ?"
+                  },
+                  {
+                        "en": "Please find below the requested information.",
+                        "fr": "Vous trouverez ci-dessous les informations demandées."
+                  },
+                  {
+                        "en": "I would like to discuss several points with you.",
+                        "fr": "Je souhaiterais aborder plusieurs points avec vous."
+                  },
+                  {
+                        "en": "Please do not hesitate to contact me if you have any questions.",
+                        "fr": "N’hésitez pas à me contacter si vous avez des questions."
+                  }
+            ]
+      },
+      "attachments": {
+            "title": "5. Pièces jointes et documents",
+            "description": "Les phrases pour envoyer, recevoir ou mentionner une pièce jointe.",
+            "items": [
+                  {
+                        "en": "Please find attached the invoice.",
+                        "fr": "Veuillez trouver la facture en pièce jointe."
+                  },
+                  {
+                        "en": "I have attached the document to this email.",
+                        "fr": "J’ai joint le document à cet e-mail."
+                  },
+                  {
+                        "en": "You will find the file attached.",
+                        "fr": "Vous trouverez le fichier en pièce jointe."
+                  },
+                  {
+                        "en": "I am sending you the updated version.",
+                        "fr": "Je vous envoie la version mise à jour."
+                  },
+                  {
+                        "en": "Could you send me the attachment again?",
+                        "fr": "Pourriez-vous me renvoyer la pièce jointe ?"
+                  },
+                  {
+                        "en": "The attachment seems to be missing.",
+                        "fr": "La pièce jointe semble manquer."
+                  },
+                  {
+                        "en": "I am forwarding you the email from our supplier.",
+                        "fr": "Je vous transfère l’e-mail de notre fournisseur."
+                  },
+                  {
+                        "en": "Please check the attached file before the meeting.",
+                        "fr": "Merci de vérifier le fichier joint avant la réunion."
+                  }
+            ]
+      },
+      "followup": {
+            "title": "6. Relancer et remercier",
+            "description": "Les formules utiles pour relancer avec tact ou exprimer sa gratitude.",
+            "items": [
+                  {
+                        "en": "I am following up on my previous email.",
+                        "fr": "Je me permets de revenir vers vous concernant mon précédent e-mail."
+                  },
+                  {
+                        "en": "I would like to kindly remind you that the deadline is tomorrow.",
+                        "fr": "Je me permets de vous rappeler que l’échéance est demain."
+                  },
+                  {
+                        "en": "I have not heard back from you yet.",
+                        "fr": "Je n’ai pas encore eu de retour de votre part."
+                  },
+                  {
+                        "en": "Could you please get back to me when possible?",
+                        "fr": "Pourriez-vous me répondre dès que possible ?"
+                  },
+                  {
+                        "en": "Thank you for your time.",
+                        "fr": "Merci pour le temps que vous m’accordez."
+                  },
+                  {
+                        "en": "Thank you in advance for your help.",
+                        "fr": "Merci d’avance pour votre aide."
+                  },
+                  {
+                        "en": "I really appreciate your support.",
+                        "fr": "J’apprécie beaucoup votre aide."
+                  },
+                  {
+                        "en": "Thank you for taking the time to review my request.",
+                        "fr": "Merci d’avoir pris le temps d’examiner ma demande."
+                  }
+            ]
+      },
+      "closing": {
+            "title": "7. Conclusion et clôture",
+            "description": "Les phrases pour terminer correctement un e-mail professionnel ou amical.",
+            "items": [
+                  {
+                        "en": "I remain at your disposal for any further information.",
+                        "fr": "Je reste à votre disposition pour toute information complémentaire."
+                  },
+                  {
+                        "en": "If you need any further information, please let me know.",
+                        "fr": "Si vous avez besoin de plus d’informations, merci de me le faire savoir."
+                  },
+                  {
+                        "en": "I look forward to hearing from you.",
+                        "fr": "Dans l’attente de votre retour."
+                  },
+                  {
+                        "en": "I look forward to meeting you.",
+                        "fr": "Au plaisir de vous rencontrer."
+                  },
+                  {
+                        "en": "Best regards,",
+                        "fr": "Cordialement,"
+                  },
+                  {
+                        "en": "Kind regards,",
+                        "fr": "Bien cordialement,"
+                  },
+                  {
+                        "en": "Yours sincerely,",
+                        "fr": "Sincères salutations,"
+                  },
+                  {
+                        "en": "Yours faithfully,",
+                        "fr": "Veuillez agréer mes salutations distinguées,"
+                  },
+                  {
+                        "en": "All the best,",
+                        "fr": "Bien à vous,"
+                  },
+                  {
+                        "en": "See you soon,",
+                        "fr": "À bientôt,"
+                  },
+                  {
+                        "en": "Take care,",
+                        "fr": "Prends soin de toi,"
+                  }
+            ]
+      },
+      "technical": {
+            "title": "8. Vocabulaire technique de messagerie",
+            "description": "Les mots indispensables pour utiliser Gmail, Outlook ou tout autre logiciel de messagerie.",
+            "items": [
+                  {
+                        "en": "sender",
+                        "fr": "expéditeur"
+                  },
+                  {
+                        "en": "recipient",
+                        "fr": "destinataire"
+                  },
+                  {
+                        "en": "subject line",
+                        "fr": "objet du mail"
+                  },
+                  {
+                        "en": "email address",
+                        "fr": "adresse e-mail"
+                  },
+                  {
+                        "en": "inbox",
+                        "fr": "boîte de réception"
+                  },
+                  {
+                        "en": "sent items",
+                        "fr": "éléments envoyés"
+                  },
+                  {
+                        "en": "draft",
+                        "fr": "brouillon"
+                  },
+                  {
+                        "en": "spam folder",
+                        "fr": "dossier spam"
+                  },
+                  {
+                        "en": "attachment",
+                        "fr": "pièce jointe"
+                  },
+                  {
+                        "en": "carbon copy",
+                        "fr": "copie carbone"
+                  },
+                  {
+                        "en": "blind carbon copy",
+                        "fr": "copie carbone invisible"
+                  },
+                  {
+                        "en": "reply",
+                        "fr": "répondre"
+                  },
+                  {
+                        "en": "reply all",
+                        "fr": "répondre à tous"
+                  },
+                  {
+                        "en": "forward",
+                        "fr": "transférer"
+                  },
+                  {
+                        "en": "delete",
+                        "fr": "supprimer"
+                  },
+                  {
+                        "en": "send",
+                        "fr": "envoyer"
+                  }
+            ]
+      }
+};
+    const models = {
+      "formal": {
+            "title": "Modèle professionnel – demande d’information",
+            "subject": "Request for information about your services",
+            "en": "Dear Ms Johnson,\n\nI hope this email finds you well.\n\nI am writing regarding your training services. Could you please send me more information about your available programmes, prices and registration process?\n\nPlease find attached a short description of our needs. I would be grateful if you could get back to me by the end of the week.\n\nThank you in advance for your help. I remain at your disposal for any further information.\n\nKind regards,\n\nEmma Martin",
+            "fr": "Chère Madame Johnson,\n\nJ’espère que vous allez bien.\n\nJe vous écris concernant vos services de formation. Pourriez-vous m’envoyer davantage d’informations sur vos programmes disponibles, vos tarifs et la procédure d’inscription ?\n\nVous trouverez en pièce jointe une courte description de nos besoins. Je vous serais reconnaissante de me répondre d’ici la fin de la semaine.\n\nMerci d’avance pour votre aide. Je reste à votre disposition pour toute information complémentaire.\n\nBien cordialement,\n\nEmma Martin"
+      },
+      "followup": {
+            "title": "Modèle professionnel – relance",
+            "subject": "Follow-up regarding my previous email",
+            "en": "Dear Mr Carter,\n\nI hope you are well.\n\nI am following up on my previous email regarding the quotation we discussed last week. I have not heard back from you yet, so I wanted to check whether you need any further information.\n\nCould you please let me know if the proposal is suitable for you?\n\nThank you for your time. I look forward to hearing from you.\n\nBest regards,\n\nLaura Smith",
+            "fr": "Cher Monsieur Carter,\n\nJ’espère que vous allez bien.\n\nJe me permets de revenir vers vous concernant le devis dont nous avons parlé la semaine dernière. N’ayant pas encore eu de retour de votre part, je souhaitais savoir si vous aviez besoin d’informations complémentaires.\n\nPourriez-vous me dire si la proposition vous convient ?\n\nMerci pour le temps que vous m’accordez. Dans l’attente de votre retour.\n\nCordialement,\n\nLaura Smith"
+      },
+      "friendly": {
+            "title": "Modèle amical – invitation",
+            "subject": "Quick invitation",
+            "en": "Hi Sarah,\n\nHow are you?\n\nI am writing to tell you that we are organising a small team lunch next Friday. Would you like to join us?\n\nPlease let me know if you are available so I can book a table.\n\nSee you soon,\n\nTom",
+            "fr": "Salut Sarah,\n\nComment vas-tu ?\n\nJe t’écris pour te dire que nous organisons un petit déjeuner d’équipe vendredi prochain. Est-ce que tu voudrais venir avec nous ?\n\nDis-moi si tu es disponible afin que je puisse réserver une table.\n\nÀ bientôt,\n\nTom"
+      }
+};
+
+    const allItems = Object.values(categories).flatMap(category => category.items);
+    let currentQuestion = null;
+    let score = 0;
+    let total = 0;
+    let selectedModel = "formal";
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function speak(text, lang){
+      if(!("speechSynthesis" in window)){
+        alert("La synthèse vocale n'est pas disponible dans ce navigateur.");
+        return;
+      }
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = lang;
+      utterance.rate = lang === "en-GB" ? 0.86 : 0.94;
+      speechSynthesis.speak(utterance);
+    }
+
+    function stopAudio(){
+      if("speechSynthesis" in window){
+        speechSynthesis.cancel();
+      }
+    }
+
+    function renderSection(key){
+      const category = categories[key];
+      const section = document.getElementById(key);
+      section.innerHTML = `
+        <div class="section-head">
+          <div>
+            <h2>${escapeHtml(category.title)}</h2>
+            <p>${escapeHtml(category.description)}</p>
+          </div>
+          <span class="count">${category.items.length} entrées</span>
+        </div>
+        <table class="vocab-table">
+          <thead>
+            <tr><th>Anglais</th><th>Français</th><th>Audio</th></tr>
+          </thead>
+          <tbody>
+            ${category.items.map(item => `
+              <tr class="vocab-row" data-search="${escapeHtml((item.en + ' ' + item.fr).toLowerCase())}">
+                <td data-label="Anglais"><span class="en">${escapeHtml(item.en)}</span></td>
+                <td data-label="Français"><span class="fr">${escapeHtml(item.fr)}</span></td>
+                <td data-label="Audio">
+                  <div class="audio-cell">
+                    <button class="sound" type="button" data-speak="${escapeHtml(item.en)}" data-lang="en-GB">🔊 EN</button>
+                    <button class="sound frbtn" type="button" data-speak="${escapeHtml(item.fr)}" data-lang="fr-FR">🔊 FR</button>
+                  </div>
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function renderAllSections(){
+      Object.keys(categories).forEach(renderSection);
+    }
+
+    function selectModel(key){
+      selectedModel = key;
+      const model = models[key];
+      document.getElementById("model-title").textContent = model.title;
+      document.getElementById("model-subject-en").textContent = "Subject: " + model.subject;
+      document.getElementById("model-subject-fr").textContent = "Objet : " + translateSubject(model.subject);
+      document.getElementById("model-en").textContent = model.en;
+      document.getElementById("model-fr").textContent = model.fr;
+      document.getElementById("listen-model-en").onclick = () => speak(model.subject + ". " + model.en, "en-GB");
+      document.getElementById("listen-model-fr").onclick = () => speak(translateSubject(model.subject) + ". " + model.fr, "fr-FR");
+    }
+
+    function translateSubject(subject){
+      const map = {
+        "Request for information about your services": "Demande d’informations sur vos services",
+        "Follow-up regarding my previous email": "Relance concernant mon précédent e-mail",
+        "Quick invitation": "Petite invitation"
+      };
+      return map[subject] || subject;
+    }
+
+    function resetSearch(){
+      document.getElementById("search").value = "";
+      filterRows("");
+    }
+
+    function filterRows(query){
+      const q = query.trim().toLowerCase();
+      document.querySelectorAll(".vocab-row").forEach(row => {
+        const haystack = row.dataset.search || "";
+        row.classList.toggle("hidden", q && !haystack.includes(q));
+      });
+    }
+
+    function shuffle(array){
+      return [...array].sort(() => Math.random() - 0.5);
+    }
+
+    function newQuestion(){
+      const item = allItems[Math.floor(Math.random() * allItems.length)];
+      currentQuestion = item;
+      document.getElementById("quiz-question").innerHTML =
+        `<strong style="font-size:1.15rem">${escapeHtml(item.en)}</strong><br>
+         <span class="small-note">Quelle est la bonne traduction ?</span>`;
+
+      const wrongAnswers = shuffle(allItems.filter(x => x.fr !== item.fr)).slice(0,3);
+      const options = shuffle([item, ...wrongAnswers]);
+
+      document.getElementById("answers").innerHTML = options.map(option => `
+        <button class="answer" data-answer="${escapeHtml(option.fr)}">
+          ${escapeHtml(option.fr)}
+        </button>
+      `).join("");
+
+      document.querySelectorAll(".answer").forEach(button => {
+        button.addEventListener("click", () => checkAnswer(button, button.dataset.answer));
+      });
+
+      document.getElementById("quiz-result").textContent = `Score : ${score} / ${total}`;
+      document.getElementById("listen-question").onclick = () => speak(item.en, "en-GB");
+    }
+
+    function checkAnswer(button, selectedFr){
+      if(!currentQuestion) return;
+
+      const buttons = document.querySelectorAll(".answer");
+      buttons.forEach(btn => btn.disabled = true);
+
+      total++;
+      if(selectedFr === currentQuestion.fr){
+        score++;
+        button.classList.add("correct");
+        document.getElementById("quiz-result").textContent =
+          `Bonne réponse ✅ Score : ${score} / ${total}`;
+      } else {
+        button.classList.add("wrong");
+        buttons.forEach(btn => {
+          if(btn.textContent.trim() === currentQuestion.fr){
+            btn.classList.add("correct");
+          }
+        });
+        document.getElementById("quiz-result").textContent =
+          `Réponse attendue : ${currentQuestion.fr}. Score : ${score} / ${total}`;
+      }
+    }
+
+    function resetQuiz(){
+      score = 0;
+      total = 0;
+      currentQuestion = null;
+      document.getElementById("quiz-question").textContent = "Cliquez sur “Nouvelle question”.";
+      document.getElementById("answers").innerHTML = "";
+      document.getElementById("quiz-result").textContent = "Score remis à zéro.";
+      document.getElementById("listen-question").onclick = () => {};
+    }
+
+    function renderFlashcards(){
+      const cards = shuffle(allItems).slice(0,12);
+      document.getElementById("flash-list").innerHTML = cards.map(item => `
+        <div class="flashcard">
+          <div class="flash-inner">
+            <div class="flash-front">
+              <strong>${escapeHtml(item.en)}</strong>
+              <button class="sound" type="button" data-speak="${escapeHtml(item.en)}" data-lang="en-GB">🔊 Écouter</button>
+            </div>
+            <div class="flash-back">
+              <strong>${escapeHtml(item.fr)}</strong>
+              <button class="sound frbtn" type="button" data-speak="${escapeHtml(item.fr)}" data-lang="fr-FR">🔊 Écouter</button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      document.querySelectorAll(".flashcard").forEach(card => {
+        card.addEventListener("click", event => {
+          if(event.target.closest("button")) return;
+          card.classList.toggle("flipped");
+        });
+      });
+    }
+
+    function getBuilderIntro(type){
+      if(type === "request") return "I am writing to ask for more information.";
+      if(type === "confirm") return "I am writing to confirm our appointment.";
+      if(type === "attachment") return "Please find attached the requested document.";
+      if(type === "followup") return "I am following up on my previous email.";
+      return "I am writing regarding your request.";
+    }
+
+    function buildEmail(){
+      const recipient = document.getElementById("bRecipient").value.trim() || "Sir or Madam";
+      const sender = document.getElementById("bSender").value.trim() || "Your name";
+      const company = document.getElementById("bCompany").value.trim() || "your company";
+      const type = document.getElementById("bType").value;
+      const details = document.getElementById("bDetails").value.trim() || "Could you please send me more information?";
+
+      const subjectMap = {
+        request: "Request for information",
+        confirm: "Appointment confirmation",
+        attachment: "Documents attached",
+        followup: "Follow-up regarding my previous email"
+      };
+
+      const mail = `Subject: ${subjectMap[type]}
+
+Dear ${recipient},
+
+I hope this email finds you well.
+
+This is ${sender} from ${company}. ${getBuilderIntro(type)}
+
+${details}
+
+Thank you in advance for your help. If you need any further information, please let me know.
+
+Kind regards,
+
+${sender}`;
+
+      document.getElementById("built-email").textContent = mail;
+      document.getElementById("copy-note").textContent = "";
+      return mail;
+    }
+
+    function speakBuiltEmail(){
+      const mail = document.getElementById("built-email").textContent.trim() || buildEmail();
+      speak(mail, "en-GB");
+    }
+
+    async function copyBuiltEmail(){
+      const mail = document.getElementById("built-email").textContent.trim() || buildEmail();
+      try{
+        await navigator.clipboard.writeText(mail);
+        document.getElementById("copy-note").textContent = "Mail copié dans le presse-papiers ✅";
+      }catch(error){
+        document.getElementById("copy-note").textContent = "Copie automatique impossible : sélectionnez le texte manuellement.";
+      }
+    }
+
+    document.addEventListener("click", event => {
+      const speakButton = event.target.closest("[data-speak]");
+      if(speakButton){
+        event.stopPropagation();
+        speak(speakButton.dataset.speak, speakButton.dataset.lang || "en-GB");
+      }
+
+      const modelButton = event.target.closest("[data-model]");
+      if(modelButton){
+        selectModel(modelButton.dataset.model);
+      }
+    });
+
+    document.getElementById("search").addEventListener("input", e => filterRows(e.target.value));
+
+    renderAllSections();
+    renderFlashcards();
+    selectModel("formal");
+    buildEmail();
+    newQuestion();
+  </script>
+</body>
+</html>
